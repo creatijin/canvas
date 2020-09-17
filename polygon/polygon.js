@@ -1,5 +1,27 @@
 const PI2 = Math.PI * 2;
 
+const COLORS = [
+  "#26251C",
+  "#EB0A44",
+  "#F2643D",
+  "#F2A73D",
+  "#A0E8B7",
+  "#FDF0CC",
+  "#FDCBB1",
+  "#E8A0A2",
+  "#C2768E",
+  "#4A536B",
+  "#E6EBA9",
+  "#ABBB9F",
+  "#6F8B94",
+  "#706482",
+  "#703D6F",
+  "#67BE9B",
+  "#95D0B8",
+  "#FCFCD7",
+  "#F1DB42",
+];
+
 export class Polygon {
   constructor(x, y, radius, sides) {
     this.x = x;
@@ -11,7 +33,7 @@ export class Polygon {
 
   animate(ctx, moveX) {
     ctx.save();
-    ctx.fillStyle = "#000";
+    // ctx.fillStyle = "#000";
     // ctx.beginPath();
 
     const angle = PI2 / this.sides;
@@ -19,7 +41,8 @@ export class Polygon {
 
     ctx.translate(this.x, this.y);
 
-    this.rotate -= moveX * 0.008;
+    this.rotate += moveX * 0.008;
+    // -=, += 방향선택
     ctx.rotate(this.rotate);
 
     for (let i = 0; i < this.sides; i++) {
@@ -27,12 +50,14 @@ export class Polygon {
       const y = this.radius * Math.sin(angle * i);
 
       ctx.save();
+      ctx.fillStyle = COLORS[i];
       ctx.translate(x, y);
       ctx.rotate((((360 / this.sides) * i + 45) * Math.PI) / 180);
       ctx.beginPath();
       for (let j = 0; j < 4; j++) {
-        const x2 = 80 * Math.cos(angle2 * j);
-        const y2 = 80 * Math.sin(angle2 * j);
+        const x2 = 120 * Math.cos(angle2 * j);
+        const y2 = 120 * Math.sin(angle2 * j);
+        // 상자 크기 조절
         j == 0 ? ctx.moveTo(x2, y2) : ctx.lineTo(x2, y2);
       }
       ctx.fill();

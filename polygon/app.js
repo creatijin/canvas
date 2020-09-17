@@ -1,4 +1,6 @@
-import { Polygon } from "./polygon.js";
+import {
+  Polygon
+} from "./polygon.js";
 
 class App {
   constructor() {
@@ -32,9 +34,9 @@ class App {
 
     this.polygon = new Polygon(
       this.stageWidth / 2,
-      this.stageHeight / 2,
-      this.stageHeight / 3.5,
-      10
+      this.stageHeight + (this.stageHeight / 4),
+      this.stageHeight / 1.5,
+      15
     );
   }
 
