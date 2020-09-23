@@ -1,4 +1,4 @@
-import { BounceString } from "./bouncestrings.js";
+import { BounceString } from "./bouncestring.js";
 
 class App {
   constructor() {
@@ -27,9 +27,9 @@ class App {
     this.stageWidth = document.body.clientWidth;
     this.stageHeight = document.body.clientHeight;
 
-    this.canvas.width = this.stageWidth * this.pixeRatio;
-    this.canvas.height = this.stageHeight * this.pixeRatio;
-    this.ctx.scale(this.pixeRatio, this.pixeRatio);
+    this.canvas.width = this.stageWidth * this.pixelRatio;
+    this.canvas.height = this.stageHeight * this.pixelRatio;
+    this.ctx.scale(this.pixelRatio, this.pixelRatio);
 
     this.strings = [
       new BounceString(
@@ -69,11 +69,11 @@ class App {
   }
   onUp(e) {
     this.isDown = false;
-
     this.moveX = -5000;
     this.moveY = -5000;
   }
 }
+
 window.onload = () => {
   new App();
 };
