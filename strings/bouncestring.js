@@ -41,7 +41,7 @@ export class BounceString {
   animate(ctx, moveX, moveY) {
     ctx.beginPath();
     ctx.fillStyle = "#ff00ff";
-    ctx.arc(moveX, moveY, 20, 0, Math.PI * 2, false);
+    ctx.arc(moveX, moveY, 20, 0, Math.PI * 3, false);
     ctx.fill();
 
     ctx.beginPath();
@@ -84,14 +84,14 @@ export class BounceString {
 
     for (let i = 1; i < this.points.length; i++) {
       const cx = (prevX + this.points[i].x) / 2;
-      const cy = (prevX + this.points[i].y) / 2;
+      const cy = (prevY + this.points[i].y) / 2;
 
       ctx.quadraticCurveTo(prevX, prevY, cx, cy);
 
       prevX = this.points[i].x;
       prevY = this.points[i].y;
     }
-
+    // console.log(prevX, prevY);
     ctx.lineTo(prevX, prevY);
     ctx.stroke();
   }
